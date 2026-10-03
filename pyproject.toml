@@ -1,0 +1,15 @@
+[tool.ruff]
+line-length = 120
+exclude = ["venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E701", "E702"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["data", "evaluate", "metrics", "recommend", "reports", "retrieval", "train",
+                     "make_synthetic_data", "api"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::UserWarning", "ignore::DeprecationWarning"]

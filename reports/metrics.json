@@ -1,0 +1,351 @@
+{
+  "data": {
+    "events": 884474,
+    "users": 407283,
+    "products": 53453,
+    "first_event": "2020-09-24",
+    "last_event": "2021-02-28"
+  },
+  "time_split": {
+    "test_start": "2021-01-30",
+    "users": 11432,
+    "products": 2878,
+    "n_train_users": 9760,
+    "n_test_users": 317,
+    "relevant_items_per_test_user": 2.94,
+    "candidates_per_user": 114.6,
+    "candidate_recall": 0.6352,
+    "models": {
+      "Popularity": {
+        "precision@5": 0.0568,
+        "recall@5": 0.1241,
+        "ndcg@5": 0.1159,
+        "hit@5": 0.2208,
+        "precision@10": 0.0413,
+        "recall@10": 0.1834,
+        "ndcg@10": 0.1345,
+        "hit@10": 0.2997,
+        "precision@20": 0.0274,
+        "recall@20": 0.2369,
+        "ndcg@20": 0.1492,
+        "hit@20": 0.3502
+      },
+      "Matrix factorisation (SVD)": {
+        "precision@5": 0.0461,
+        "recall@5": 0.0909,
+        "ndcg@5": 0.0851,
+        "hit@5": 0.1798,
+        "precision@10": 0.0341,
+        "recall@10": 0.1275,
+        "ndcg@10": 0.0945,
+        "hit@10": 0.2366,
+        "precision@20": 0.0263,
+        "recall@20": 0.1996,
+        "ndcg@20": 0.1155,
+        "hit@20": 0.3249
+      },
+      "Item-item KNN": {
+        "precision@5": 0.0751,
+        "recall@5": 0.1887,
+        "ndcg@5": 0.1503,
+        "hit@5": 0.3028,
+        "precision@10": 0.059,
+        "recall@10": 0.2772,
+        "ndcg@10": 0.1798,
+        "hit@10": 0.4164,
+        "precision@20": 0.0457,
+        "recall@20": 0.3915,
+        "ndcg@20": 0.2153,
+        "hit@20": 0.5426
+      },
+      "Sequential transitions": {
+        "precision@5": 0.0738,
+        "recall@5": 0.1815,
+        "ndcg@5": 0.1405,
+        "hit@5": 0.3028,
+        "precision@10": 0.0574,
+        "recall@10": 0.259,
+        "ndcg@10": 0.1674,
+        "hit@10": 0.3975,
+        "precision@20": 0.0402,
+        "recall@20": 0.3593,
+        "ndcg@20": 0.1967,
+        "hit@20": 0.4984
+      },
+      "Content-based": {
+        "precision@5": 0.0669,
+        "recall@5": 0.1725,
+        "ndcg@5": 0.1367,
+        "hit@5": 0.2871,
+        "precision@10": 0.0467,
+        "recall@10": 0.2321,
+        "ndcg@10": 0.1557,
+        "hit@10": 0.3533,
+        "precision@20": 0.0358,
+        "recall@20": 0.3336,
+        "ndcg@20": 0.1859,
+        "hit@20": 0.4606
+      },
+      "Hybrid ranker (LambdaRank)": {
+        "precision@5": 0.0883,
+        "recall@5": 0.2122,
+        "ndcg@5": 0.1687,
+        "hit@5": 0.3407,
+        "precision@10": 0.0653,
+        "recall@10": 0.2969,
+        "ndcg@10": 0.1962,
+        "hit@10": 0.4322,
+        "precision@20": 0.0514,
+        "recall@20": 0.4461,
+        "ndcg@20": 0.2414,
+        "hit@20": 0.5804
+      }
+    },
+    "beyond_accuracy": {
+      "Popularity": {
+        "coverage": 0.0059,
+        "diversity": 0.3966,
+        "novelty": 6.58
+      },
+      "Matrix factorisation (SVD)": {
+        "coverage": 0.1334,
+        "diversity": 0.3298,
+        "novelty": 9.5
+      },
+      "Item-item KNN": {
+        "coverage": 0.3641,
+        "diversity": 0.185,
+        "novelty": 10.04
+      },
+      "Sequential transitions": {
+        "coverage": 0.3537,
+        "diversity": 0.2285,
+        "novelty": 9.68
+      },
+      "Content-based": {
+        "coverage": 0.3363,
+        "diversity": 0.0142,
+        "novelty": 10.14
+      },
+      "Hybrid ranker (LambdaRank)": {
+        "coverage": 0.3443,
+        "diversity": 0.1195,
+        "novelty": 9.58
+      }
+    },
+    "ranker_vs_knn_ndcg@10": {
+      "diff": 0.0164,
+      "ci_low": -0.0061,
+      "ci_high": 0.0374,
+      "significant": false
+    },
+    "feature_importance_pct": {
+      "n_sources": 23.1,
+      "seq": 18.4,
+      "knn_norm": 14.5,
+      "content": 9.0,
+      "pop_log": 7.7,
+      "knn": 6.5,
+      "cat_share": 5.6,
+      "price_ratio": 5.1,
+      "price_log": 3.6,
+      "last_sim": 3.1,
+      "brand_share": 1.5,
+      "hist_len": 1.1,
+      "same_cat": 0.5,
+      "same_brand": 0.4
+    }
+  },
+  "leave_last_out": {
+    "users": 16098,
+    "products": 3706,
+    "n_train_users": 13393,
+    "n_test_users": 16098,
+    "relevant_items_per_test_user": 1.0,
+    "candidates_per_user": 108.1,
+    "candidate_recall": 0.8445,
+    "models": {
+      "Popularity": {
+        "precision@5": 0.0099,
+        "recall@5": 0.0494,
+        "ndcg@5": 0.0333,
+        "hit@5": 0.0494,
+        "precision@10": 0.0077,
+        "recall@10": 0.0771,
+        "ndcg@10": 0.0423,
+        "hit@10": 0.0771,
+        "precision@20": 0.0062,
+        "recall@20": 0.1249,
+        "ndcg@20": 0.0545,
+        "hit@20": 0.1249
+      },
+      "Matrix factorisation (SVD)": {
+        "precision@5": 0.019,
+        "recall@5": 0.0952,
+        "ndcg@5": 0.0673,
+        "hit@5": 0.0952,
+        "precision@10": 0.0135,
+        "recall@10": 0.1346,
+        "ndcg@10": 0.0799,
+        "hit@10": 0.1346,
+        "precision@20": 0.0093,
+        "recall@20": 0.1859,
+        "ndcg@20": 0.0928,
+        "hit@20": 0.1859
+      },
+      "Item-item KNN": {
+        "precision@5": 0.0643,
+        "recall@5": 0.3217,
+        "ndcg@5": 0.2226,
+        "hit@5": 0.3217,
+        "precision@10": 0.0439,
+        "recall@10": 0.4392,
+        "ndcg@10": 0.2607,
+        "hit@10": 0.4392,
+        "precision@20": 0.0278,
+        "recall@20": 0.5566,
+        "ndcg@20": 0.2903,
+        "hit@20": 0.5566
+      },
+      "Sequential transitions": {
+        "precision@5": 0.0649,
+        "recall@5": 0.3245,
+        "ndcg@5": 0.2242,
+        "hit@5": 0.3245,
+        "precision@10": 0.0437,
+        "recall@10": 0.437,
+        "ndcg@10": 0.2607,
+        "hit@10": 0.437,
+        "precision@20": 0.0268,
+        "recall@20": 0.5363,
+        "ndcg@20": 0.2859,
+        "hit@20": 0.5363
+      },
+      "Content-based": {
+        "precision@5": 0.046,
+        "recall@5": 0.23,
+        "ndcg@5": 0.1579,
+        "hit@5": 0.23,
+        "precision@10": 0.0324,
+        "recall@10": 0.3239,
+        "ndcg@10": 0.1883,
+        "hit@10": 0.3239,
+        "precision@20": 0.0216,
+        "recall@20": 0.4312,
+        "ndcg@20": 0.2152,
+        "hit@20": 0.4312
+      },
+      "Hybrid ranker (LambdaRank)": {
+        "precision@5": 0.0767,
+        "recall@5": 0.3833,
+        "ndcg@5": 0.2658,
+        "hit@5": 0.3833,
+        "precision@10": 0.0522,
+        "recall@10": 0.5219,
+        "ndcg@10": 0.3106,
+        "hit@10": 0.5219,
+        "precision@20": 0.0325,
+        "recall@20": 0.6495,
+        "ndcg@20": 0.343,
+        "hit@20": 0.6495
+      }
+    },
+    "beyond_accuracy": {
+      "Popularity": {
+        "coverage": 0.0081,
+        "diversity": 0.2465,
+        "novelty": 6.38
+      },
+      "Matrix factorisation (SVD)": {
+        "coverage": 0.1341,
+        "diversity": 0.4443,
+        "novelty": 9.41
+      },
+      "Item-item KNN": {
+        "coverage": 0.987,
+        "diversity": 0.236,
+        "novelty": 11.28
+      },
+      "Sequential transitions": {
+        "coverage": 0.9703,
+        "diversity": 0.2617,
+        "novelty": 10.34
+      },
+      "Content-based": {
+        "coverage": 0.9414,
+        "diversity": 0.0285,
+        "novelty": 11.4
+      },
+      "Hybrid ranker (LambdaRank)": {
+        "coverage": 0.9811,
+        "diversity": 0.0996,
+        "novelty": 10.72
+      }
+    },
+    "ranker_vs_knn_ndcg@10": {
+      "diff": 0.05,
+      "ci_low": 0.0461,
+      "ci_high": 0.054,
+      "significant": true
+    },
+    "feature_importance_pct": {
+      "n_sources": 21.7,
+      "seq": 21.5,
+      "content": 15.0,
+      "pop_log": 8.7,
+      "knn_norm": 7.5,
+      "price_ratio": 6.3,
+      "knn": 4.8,
+      "price_log": 4.4,
+      "cat_share": 3.5,
+      "last_sim": 2.8,
+      "hist_len": 1.7,
+      "brand_share": 1.0,
+      "same_cat": 0.6,
+      "same_brand": 0.5
+    },
+    "ablation": {
+      "all features": {
+        "ndcg@10": 0.3106,
+        "recall@10": 0.5219
+      },
+      "without collaborative": {
+        "ndcg@10": 0.2947,
+        "recall@10": 0.4996
+      },
+      "without sequential": {
+        "ndcg@10": 0.3021,
+        "recall@10": 0.5098
+      },
+      "without content": {
+        "ndcg@10": 0.2965,
+        "recall@10": 0.4975
+      },
+      "without popularity": {
+        "ndcg@10": 0.3073,
+        "recall@10": 0.5156
+      }
+    }
+  },
+  "cold_start": {
+    "n_users": 5000,
+    "catalogue_size": 53453,
+    "eligible_cold_users": 51161,
+    "targets_outside_cf_model_pct": 56.0,
+    "models": {
+      "Popularity": {
+        "hit@10": 0.0334,
+        "ndcg@10": 0.0166
+      },
+      "Content-based fallback": {
+        "hit@10": 0.2858,
+        "ndcg@10": 0.1711
+      }
+    }
+  },
+  "serving": {
+    "users_in_model": 16098,
+    "products_in_model": 3706,
+    "catalogue_products": 53453
+  }
+}

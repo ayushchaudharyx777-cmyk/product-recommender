@@ -1,0 +1,16 @@
+segment_type,segment,users,precision@10,recall@10,ndcg@10,knn_ndcg@10,lift_vs_knn_pct
+Favourite category,other categories,5862,0.0547,0.5466,0.3277,0.2692,21.749
+Favourite category,videocards,4957,0.0455,0.4545,0.2571,0.2212,16.2349
+Favourite category,unknown,2461,0.0577,0.5766,0.3467,0.2904,19.4111
+Favourite category,motherboard,1037,0.0618,0.6181,0.42,0.3966,5.9214
+Favourite category,telephone,1009,0.0417,0.4172,0.2458,0.1919,28.0571
+Favourite category,tv,772,0.0601,0.601,0.3469,0.2618,32.4848
+History length,1-2 products,7215,0.0587,0.5871,0.3545,0.3021,17.3474
+History length,3-4 products,5009,0.0528,0.5277,0.3108,0.262,18.6622
+History length,5-9 products,2803,0.0412,0.4124,0.2388,0.1938,23.2029
+History length,10+ products,1071,0.0343,0.3427,0.2017,0.1501,34.3248
+Price tier,budget,5367,0.0602,0.602,0.3746,0.3249,15.2933
+Price tier,premium,5366,0.048,0.4799,0.277,0.2381,16.3458
+Price tier,mid-range,5365,0.0484,0.4839,0.2802,0.2189,27.9875
+Shopper type,browser only,13102,0.0535,0.5349,0.3175,0.2664,19.1751
+Shopper type,has purchased,2996,0.0465,0.4653,0.2805,0.2355,19.1288
