@@ -1,94 +1,73 @@
-<h1 align="center">Hi there, I'm Ayush 👋</h1>
-<h3 align="center">CSE (AI & ML) student | Building toward a career at top global tech companies</h3>
+# Personalized Product Recommendation
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=2EAADC&center=true&vCenter=true&width=600&lines=Learning+DSA+and+Python+from+scratch;Building+JARVIS+%E2%80%94+a+personal+AI+assistant;Aspiring+ML+Engineer+%7C+Open+to+opportunities" alt="Typing SVG" />
-</p>
+Implicit-feedback recommender built on the REES46 electronics store event log (views, carts, purchases). Compares three models and serves the best one through a small CLI.
 
----
+## Results
 
-### 🎓 About Me
+Leave-last-out evaluation on 16,098 users and 3,706 products (top-10 recommendations):
 
-- 🏫 First-year **B.Tech CSE (AI & ML)** student at **SRM Institute of Science and Technology, Kattankulathur (KTR)**
-- 🎯 Long-term goal: land a role at a top international tech company (FAANG, OpenAI, Anthropic, Nvidia, SpaceX, etc.)
-- 🌍 Open to working outside India
-- 🛠️ Currently leveling up: Data Structures & Algorithms, Python, and core ML fundamentals
-- 🧠 Building everything in public as I learn — projects, mistakes, and progress included
+| Model | Hit@10 | NDCG@10 | MRR@10 | Coverage |
+|---|---|---|---|---|
+| Popularity (baseline) | 0.0771 | 0.0423 | 0.0318 | 0.0081 |
+| **Item-item KNN** | **0.4392** | **0.2606** | **0.2057** | **0.9873** |
+| SVD (64 factors) | 0.1346 | 0.0799 | 0.0632 | 0.1341 |
 
----
+Item-KNN puts the user's next product in the top 10 for 44% of users, about 5.7x the popularity baseline, while recommending from 98.7% of the catalogue.
 
-### 🚀 Featured Projects
+## Dataset
 
-#### 🤖 [J.A.R.V.I.S — Personal AI Assistant](https://github.com/your-username/jarvis)
-A Python-based personal AI dashboard inspired by Tony Stark's assistant — built from the ground up as a long-term learning project.
-- 🖥️ Custom GUI built with **CustomTkinter**, including animated startup sequence
-- 🧩 Local LLM powered by **Ollama (llama3.2)** for offline AI responses
-- 🗣️ Voice interaction via **speech recognition** + **pyttsx3 / ElevenLabs** text-to-speech
-- 🎵 Optional integrations: **Spotify**, **OpenCV** (webcam), **Flask** (LAN server), **librosa** (voice emotion analysis)
-- ⚙️ Built-in productivity tools: Pomodoro timer, clipboard manager, code execution engine, habit tracker, unit converter, QR/password generator, network tools, screenshot OCR, process killer, weather alerts, CPU/RAM monitor with live sparklines, hotkey overlay, and switchable AI personalities
+[eCommerce events history in electronics store](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-electronics-store) (Kaggle, REES46).
 
-#### 🎉 [Birthday Surprise Website](https://github.com/your-username/birthday-surprise)
-A self-contained, fully animated birthday website built as a personal gift project.
-- 💻 Single-file **HTML/CSS/JS** build with custom animations and transitions
-- 📸 Interactive photo timeline and gallery
-- 🚀 Deployed live on **Netlify**
+- 885,129 events: 793,748 views, 54,035 carts, 37,346 purchases
+- 407,283 users, 53,453 products
+- `category_code` missing in 26.7% of rows, `brand` in 24.0%
 
-> More projects coming soon as I build out my GitHub portfolio 🌱
+Download `events.csv` and place it at `data/events.csv` (not committed to the repo).
 
----
+## Approach
 
-### 🧰 Tech Stack
+1. **Implicit feedback weights**: view = 1, cart = 3, purchase = 5. Weights are summed per user-product pair, capped at 20, then log-scaled.
+2. **k-core filtering**: keep users with at least 3 distinct products and products with at least 5 users, applied iteratively. The raw data averages about 2 events per user, so this step is what makes collaborative filtering possible.
+3. **Split**: leave-last-out. Each user's most recently discovered product is held out as the test item.
+4. **Models**: popularity baseline, item-item cosine KNN (top 50 neighbours per item), truncated SVD.
+5. **Serving**: the best model is refit on all interactions and saved with product metadata.
 
-**Languages**
-<p>
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
-</p>
+## Usage
 
-**Tools & Frameworks**
-<p>
-<img src="https://img.shields.io/badge/CustomTkinter-2EAADC?style=for-the-badge&logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white"/>
-<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white"/>
-<img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white"/>
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
-<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
-<img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"/>
-<img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white"/>
-</p>
+```cmd
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
 
-**Currently Learning**
-<p>
-<img src="https://img.shields.io/badge/Data%20Structures%20%26%20Algorithms-2EAADC?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Machine%20Learning-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"/>
-</p>
+python src\train.py
+python src\recommend.py --item 1821813
+python src\recommend.py --user 1515915625353230683
+```
 
----
+`--item` returns similar products, `--user` returns personalised recommendations. Users not in the model get the most popular products.
 
-### 📊 GitHub Stats
+## Project structure
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=your-username&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats" height="170"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=your-username&theme=tokyonight&hide_border=true" alt="GitHub Streak" height="170"/>
-</p>
+```
+product-recommender/
+├── data/events.csv          # not committed
+├── models/metrics.json      # evaluation results
+├── src/train.py             # preprocessing, training, evaluation
+├── src/recommend.py         # recommendation CLI
+└── requirements.txt
+```
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=your-username&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages"/>
-</p>
+## Limitations
 
----
+- Only 16,098 of 407,283 users (about 4%) pass the filter. Everyone else gets the popularity fallback.
+- Products with fewer than 5 users are not recommendable.
+- Leave-last-out lets item similarities use other users' later events, so a strict time-based split would score lower.
+- Offline metrics only. No online or A/B evaluation.
 
-### 📫 Connect With Me
+## Future Scope
 
-<p>
-<a href="https://linkedin.com/in/your-linkedin" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-<a href="mailto:your.email@example.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
-<a href="https://twitter.com/your-handle" target="_blank"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"/></a>
-</p>
-
----
-
-<p align="center"><i>"Every expert was once a beginner." Currently writing chapter one. 🚀</i></p>
+- Content-based fallback using category, brand and price for cold-start users and products
+- Session-based models (GRU4Rec, SASRec) to use the order of events within a session
+- ALS or BPR tuned for implicit feedback
+- Global time-based split and hyperparameter search
+- REST API (FastAPI) with Docker, plus monitoring of recommendation coverage and drift
