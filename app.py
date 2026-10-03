@@ -52,7 +52,7 @@ with tab_user:
         sample = np.random.default_rng(7).choice(users, size=min(300, len(users)), replace=False)
         uid = st.selectbox("Pick a user", sample)
         custom = st.text_input("...or enter any user ID")
-        k = st.slider("Number of recommendations", 5, 20, 10)
+        k = st.slider("Number of recommendations", 5, 50, 20)
         if custom.strip().isdigit():
             uid = int(custom)
     with right:

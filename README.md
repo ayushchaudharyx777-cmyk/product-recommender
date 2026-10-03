@@ -1,5 +1,7 @@
 # Personalized Product Recommendation
 
+**Live demo:** https://recommender-ayush.streamlit.app
+
 Hybrid retrieve-and-rank recommender built on the REES46 electronics store event log (views, carts, purchases). Candidates are retrieved from collaborative, sequential and popularity signals, then re-ranked by a LightGBM learning-to-rank model.
 
 ## Results
