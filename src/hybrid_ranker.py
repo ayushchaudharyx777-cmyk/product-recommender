@@ -161,7 +161,10 @@ def main():
     print("\nfeature importance (gain %):")
     print((100 * imp / imp.sum()).sort_values(ascending=False).round(1).to_string())
 
-    joblib.dump({"ranker": ranker, "features": FEATURES}, OUT / "ranker.joblib")
+        # refit retrieval on ALL interactions for serving (plain dicts so recommend.py can load them)
+    full = Phase(ui, np.full(shape[0], -1), shape)
+    joblib.dump({"ranker": ranker, "phase": vars(full), "meta": m, "users": users, "items": items,
+                 "info": meta[["category_code", "brand", "price"]]}, OUT / "ranker.joblib")
     json.dump({"candidate_recall": round(float(found / shape[0]), 4),
                "candidates_per_user": round(n_cand / shape[0], 1),
                "metrics": res.round(4).to_dict("index"),
