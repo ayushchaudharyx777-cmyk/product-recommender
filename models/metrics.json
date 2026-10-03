@@ -1,0 +1,25 @@
+{
+  "best": "item_knn",
+  "metrics": {
+    "popularity": {
+      "hit@10": 0.0771,
+      "ndcg@10": 0.0423,
+      "mrr@10": 0.0318,
+      "coverage": 0.0081
+    },
+    "item_knn": {
+      "hit@10": 0.4392,
+      "ndcg@10": 0.2606,
+      "mrr@10": 0.2057,
+      "coverage": 0.9873
+    },
+    "svd": {
+      "hit@10": 0.1346,
+      "ndcg@10": 0.0799,
+      "mrr@10": 0.0632,
+      "coverage": 0.1341
+    }
+  },
+  "n_users": 16098,
+  "n_items": 3706
+}
